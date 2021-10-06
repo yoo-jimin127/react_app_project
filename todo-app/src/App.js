@@ -2,13 +2,14 @@ import React from 'react';
 import Hello from './Hello';
 import Wrapper from './Wrapper';
 
+
 function App() {
   return (
     <Wrapper>
-      <Hello name="App User" color="blue"/>
-      <Hello color="pink"/>
+      <Hello name="App User" color="blue" isSpecial={true}/>
+      <Hello color="pink" />
     </Wrapper>
-  );
+  )
 }
 
 export default App;
