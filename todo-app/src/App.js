@@ -1,17 +1,29 @@
+// import React from 'react';
+// import Hello from './Hello';
+// import Wrapper from './Wrapper';
+
+// function App() {
+//   return (
+//     <Wrapper>
+//       <Hello name="App User" color="blue" isSpecial />
+//       <Hello color="pink"/>
+//     </Wrapper>
+//   );
+// }
+
+// export default App;
+
 import React from 'react';
-import Hello from './Hello';
-import Wrapper from './Wrapper';
+import Counter from './Counter';
 
 function App() {
   return (
-    <Wrapper>
-      <Hello name="App User" color="blue" isSpecial />
-      <Hello color="pink"/>
-    </Wrapper>
+    <Counter />
   );
 }
 
 export default App;
+
 
 // function App() {
 //   return (
