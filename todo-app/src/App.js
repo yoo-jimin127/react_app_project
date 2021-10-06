@@ -3,12 +3,14 @@ import Hello from './Hello';
 
 function App() {
   return (
-    <Hello name="APP User" />
+    <>
+      <Hello name="App User" color="blue"/>
+      <Hello color="pink"/>
+    </>
   );
 }
 
 export default App;
-
 
 // function App() {
 //   return (

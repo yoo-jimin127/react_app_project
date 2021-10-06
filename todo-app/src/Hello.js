@@ -1,7 +1,11 @@
 import React from 'react';
 
-function Hello(props) {
-  return <div>{props.name}님의 TODO APP입니다.</div>
+function Hello({ color, name }) {
+  return <div style={{ color }}> {name} 님의 TODO APP</div>
+}
+
+Hello.defaultProps = {
+  name: '이름없음'
 }
 
 export default Hello;
