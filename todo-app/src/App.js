@@ -15,7 +15,7 @@ function App() {
       [name]: value
     });
   };
-  const users = [
+  const [users, setUsers] = useState([
     {
       id: 1,
       username: 'jimin',
@@ -31,12 +31,16 @@ function App() {
       username: 'liz',
       email: 'liz@example.com'
     }
-  ];
+  ]);
 
   const nextId = useRef(4);
   const onCreate = () => {
-    // 나중에 구현 할 배열에 항목 추가하는 로직
-    // ...
+    const user = {
+      id: nextId.current,
+      username,
+      email
+    };
+    setUsers([...users, user]);
 
     setInputs({
       username: '',
@@ -58,6 +62,7 @@ function App() {
 }
 
 export default App;
+
 // import React from 'react';
 // import Hello from './Hello';
 // import Wrapper from './Wrapper';
