@@ -2,9 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import './Button.scss';
 
-function Button({ children, size, color, outline }) {
+function Button({ children, size, color, outline, fullWidth }) {
   return (
-    <button className={classNames('Button', size, color, { outline })}>
+    <button
+      className={classNames('Button', size, color, { outline, fullWidth })}
+    >
       {children}
     </button>
   );
