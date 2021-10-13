@@ -1,4 +1,4 @@
-$blue: #228be6; 
+$blue: #228be6;
 
 .Button {
   display: inline-flex;
@@ -9,17 +9,37 @@ $blue: #228be6;
   border: none;
   cursor: pointer;
 
-  height: 2.25rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
+  &.large {
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+  }
 
-  background: $blue; 
+  &.medium {
+    height: 2.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+  }
+
+  &.small {
+    height: 1.75rem;
+    font-size: 0.875rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  background: $blue;
   &:hover {
-    background: lighten($blue, 10%); 
+    background: lighten($blue, 10%);
   }
 
   &:active {
-    background: darken($blue, 10%); 
+    background: darken($blue, 10%);
+  }
+
+  & + & {
+    margin-left: 1rem;
   }
 }
