@@ -5,108 +5,65 @@
  * @format
  * @flow strict-local
  */
+ import React, { Component } from 'react'
+ import {View} from 'react-native';
+ import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+ import {LocaleConfig} from 'react-native-calendars';
+ //ToastAndroid 추가
+import {View, ToastAndroid} from 'react-native';
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+ 
+ LocaleConfig.locales['fr'] = {
+   monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+   monthNamesShort: ['Janv.','Févr.','Mars','Avril','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'],
+   dayNames: ['일요일','월요일', '화요일','수요일','목요일','금요일','토요일'],
+   dayNamesShort: ['일', '월','화','수','목','금','토'],
+   today: 'Aujourd\'hui'
+ };
+ LocaleConfig.defaultLocale = 'fr';
+ 
+ class App extends Component {
+   render() {
+      return (
+       <View style={{ paddingTop: 50, flex: 1 }}>
+         <Calendar
+         // 가장 초기에 보이는 화면의 디폴트 데이트 값
+         current={'2021-11-09'}
+         minDate={'2021-01-01'}
+         maxDate={'2021-12-31'}
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+         // Handler which gets executed on day press. Default = undefined
+        onDayPress={(day) => {
+          console.log('selected day', day)
+          ToastAndroid.showWithGravity(
+          day.dateString,
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER
+          );   
+        }}
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+         onDayLongPress={(day) => {console.log('selected day', day)}}
+         monthFormat={'yyyy MM'}
+         onMonthChange={(month) => {console.log('month changed', month)}}
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+         hideArrows={true}
+         renderArrow={(direction) => (<Arrow/>)}
+         hideExtraDays={true}
+         disableMonthChange={true}
+         firstDay={1}
+         hideDayNames={false}
+         showWeekNumbers={false}
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+         onPressArrowLeft={substractMonth => substractMonth()}
+         onPressArrowRight={addMonth => addMonth()}
+         
+         disableArrowLeft={true}
+         disableArrowRight={true}
+         disableAllTouchEventsForDisabledDays={true}
+         />
+       </View>
+      )
+    }
+  }
+ 
+ export default App;
