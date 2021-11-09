@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
+html, body {
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+ .App {
+  height:100vh;
+  width:100vw;
+  font-size: 1.5vh;
+  display: flex;      /* display 설정해줘야 아래 flex로 해주면 direction 선택가능*/
+  flex-direction: column;   /* 이건 세로순으로  태그들을 표시함 css*/
+  align-items: center;      /* 이건 가로 중앙 css*/
+  justify-content: center;  /* 이건 세로 중앙 css*/
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App .control{
   display: flex;
+  flex-direction: row;
+}
+.App table{
+  display:flex;
+  width:50vw;
+  height:50vh;
+}
+.App table tbody{
+  display:flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.App tr{
+    display:flex;
+    flex-direction: row;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App td{
+    display:flex;
+    border:1px solid gray;
+    width:5vw;
+    height:5vh;
+}
+.App td span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
