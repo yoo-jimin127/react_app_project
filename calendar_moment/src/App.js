@@ -19,7 +19,7 @@ const App =()=>{
           <tr key={week}>
             {
               Array(7).fill(0).map((data, index) => {
-                let days = today.clone().startOf('year').week(week).startOf('week').add(index, 'day'); //d로해도되지만 직관성
+                let days = today.clone().startOf('year').week(week).startOf('week').add(index, 'day'); 
 
                 if(moment().format('YYYYMMDD') === days.format('YYYYMMDD')){
                   return(
